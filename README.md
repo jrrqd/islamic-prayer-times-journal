@@ -22,7 +22,7 @@ A Chrome extension that transforms your new tab into a beautiful Islamic dashboa
 ## Installation
 
 ### From Chrome Web Store
-Coming soon...
+[Chrome Web Store](https://chromewebstore.google.com/detail/prayer-times/aldcepfggoodbldeclmhipcolmlhdihi)
 
 ### From Source
 1. Clone this repository
