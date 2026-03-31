@@ -1,0 +1,344 @@
+/* Calendar Container */
+.calendar-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 90vh;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.calendar-nav button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.calendar-nav button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.3rem;
+    flex: 1;
+    align-content: start;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+}
+
+.calendar-day:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.calendar-day.today {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.calendar-day.selected {
+    background: rgba(33, 150, 243, 0.3);
+}
+
+.calendar-day.other-month {
+    opacity: 0.5;
+}
+
+.weekday-header {
+    text-align: center;
+    padding: 0.3rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+}
+
+/* Journal Container */
+.journal-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+}
+
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.journal-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.journal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-textarea {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    resize: none;
+    margin-top: 1rem;
+}
+
+.journal-textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Page Navigation */
+.page-nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.page-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.page-dot.active {
+    background: white;
+}
+
+/* Page Navigation Arrows */
+.page-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+    border-radius: 0.5rem;
+}
+
+.page-arrow:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.page-arrow.left {
+    left: 1rem;
+}
+
+.page-arrow.right {
+    right: 1rem;
+}
+
+/* Page Container */
+.pages-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, visibility 0.5s ease;
+    background: transparent;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.page.page-1 {
+    transform: translateX(0);
+}
+
+.page.page-2 {
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page.slide-left {
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page.slide-right {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* When page 1 is slid left, make page 2 visible */
+.page.page-1.slide-left + .page.page-2 {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Container Layout */
+.page .container {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Specific styles for page 2 */
+.page-2 .container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    height: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Jump Date Modal */
+.jump-date-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: none;
+}
+
+.jump-date-modal.active {
+    display: block;
+}
+
+.jump-date-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 999;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+.journal-last-modified {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.journal-stats {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    min-height: 1.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+} 

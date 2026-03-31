@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calendar-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="pages-container">
+        <!-- Page 1 -->
+        <div class="page page-1">
+            <div class="container">
+                <div class="column clock-column">
+                    <div id="current-time"></div>
+                    <div id="prayer-countdown"></div>
+                    <div class="countdown-progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="column prayer-column">
+                    <h1>Prayer Time</h1>
+                    <h2 id="location" class="location-text" title="Click to update location">Loading location...</h2>
+                    <table id="prayer-table">
+                        <tr><td>Fajr</td><td id="fajr-time"></td></tr>
+                        <tr><td>Dhuhr</td><td id="dhuhr-time"></td></tr>
+                        <tr><td>Asr</td><td id="asr-time"></td></tr>
+                        <tr><td>Maghrib</td><td id="maghrib-time"></td></tr>
+                        <tr><td>Isha</td><td id="isha-time"></td></tr>
+                    </table>
+                </div>
+
+                <div class="column todo-column">
+                    <h1><center>Today's Todo List</center></h1>
+                    <div id="proverb"></div>
+                    <div id="todo-container"></div>
+                    <button id="add-todo-button">+ Add Todo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page page-2">
+            <div class="container">
+                <div class="column calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-title">Calendar</div>
+                        <div class="calendar-nav">
+                            <button id="prev-month">&lt;</button>
+                            <span id="current-month">January 2024</span>
+                            <button id="next-month">&gt;</button>
+                            <button id="jump-date">Jump to Date</button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="weekday-header">Sun</div>
+                        <div class="weekday-header">Mon</div>
+                        <div class="weekday-header">Tue</div>
+                        <div class="weekday-header">Wed</div>
+                        <div class="weekday-header">Thu</div>
+                        <div class="weekday-header">Fri</div>
+                        <div class="weekday-header">Sat</div>
+                        <!-- Calendar days will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="column journal-container">
+                    <div class="journal-header">
+                        <div class="journal-date">Journal Entry - Today</div>
+                        <div class="journal-last-modified"></div>
+                    </div>
+                    <div class="journal-content">
+                        <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+                    </div>
+                    <div class="journal-stats"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Elements -->
+    <button class="page-arrow right" id="next-page">→</button>
+    <button class="page-arrow left" id="prev-page">←</button>
+    
+    <div class="page-nav">
+        <div class="page-dot active" data-page="1"></div>
+        <div class="page-dot" data-page="2"></div>
+    </div>
+
+    <!-- Jump Date Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="jump-date-modal" id="jump-date-modal">
+        <h3>Jump to Date</h3>
+        <input type="date" class="jump-date-input" id="jump-date-input">
+        <button class="calendar-nav" id="jump-date-button">Go</button>
+        <button class="calendar-nav" id="close-modal">Cancel</button>
+    </div>
+
+    <div id="donation-container"></div>
+
+    <script src="script.js"></script>
+    <script src="calendar.js"></script>
+</body>
+</html>

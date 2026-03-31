@@ -1,0 +1,44 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 3,
+  "name": "Prayer Times",
+  "version": "2.25",
+  "description": "Prayer Times with Todo List",
+  "permissions": [
+    "geolocation",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://api.aladhan.com/*",
+    "https://nominatim.openstreetmap.org/*",
+    "https://bingw.jasonzeng.dev/*",
+    "https://www.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "773691398056-cj2pj8md4d1vf4p55f2nalmfm69flvce.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "web_accessible_resources": [{
+    "resources": ["welcome.html"],
+    "matches": ["<all_urls>"]
+  }],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
